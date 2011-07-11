@@ -1,0 +1,25 @@
+#!/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby
+#coding:UTF-8
+
+require 'rubygems'
+require 'net/http'
+require 'hpricot'
+
+def translate(text, fromto="en|ja")
+  Net::HTTP.version_1_2
+  Net::HTTP.start('translate.google.com', 80) {|http|
+    response = http.post('/translate_t', "langpair=#{fromto}&text=#{text}")
+    doc = Hpricot(response.body.to_s.encode("UTF-8", "Shift_JIS"))
+    return (doc/"#result_box").inner_text
+  }
+end
+
+
+fromto = (ARGV[0]=='j' ? "ja|en" : "en|ja")
+if ARGV[1] 
+  open(ARGV[1]) { |f|
+    print translate(f.read, fromto)
+  }
+else
+  print translate($stdin.read, fromto)
+end
