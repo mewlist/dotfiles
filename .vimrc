@@ -27,6 +27,7 @@ vmap ,j : call TrJA()  <CR>
 vmap ,e : call TrEN()  <CR>
 
 nmap ,p :Project proj
+nmap ,l :redraw! <CR>
 
 map <C-H> <C-W>h
 map <C-J> <C-W>j
@@ -46,8 +47,6 @@ function TrJA() range
 endfunction
  
 
-" filetype off
-""" pathogen をコメントアウト
 " call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags()
 " set helpfile=$VIMRUNTIME/doc/help.txt
@@ -65,3 +64,4 @@ Bundle 'shemerey/vim-project'
 "Bundle 'sontek/minibufexpl.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'mattn/zencoding-vim'
+Bundle 'VimExplorer'
