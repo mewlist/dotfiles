@@ -1,3 +1,3 @@
 [submodule "vim_plugins/snipmate-snippets"]
 	path = vim_plugins/snipmate-snippets
-	url = git://github.com/mewlist/snipmate-snippets.git
+	url = https://github.com/mewlist/snipmate-snippets.git
