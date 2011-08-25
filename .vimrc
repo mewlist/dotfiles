@@ -60,9 +60,10 @@ Bundle 'gmarik/vundle'
 " 利用中のプラグインをBundle
 Bundle 'vim-scripts/AutoComplPop'
 Bundle 'vim-scripts/TabBar'
-Bundle 'shemerey/vim-project'
-"Bundle 'sontek/minibufexpl.vim'
+Bundle 'scrooloose/nerdtree'
+" Bundle 'sontek/minibufexpl.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'VimExplorer'
 Bundle 'tsaleh/vim-align'
+
