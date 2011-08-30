@@ -46,6 +46,7 @@ function TrJA() range
   silent execute "normal! gv:B s/.\\+/\\=system('echo -n '.submatch(0).' | translate j')/g\<CR>"
 endfunction
  
+au BufRead,BufNewFile *.slim set filetype=slim
 
 " call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags()
