@@ -29,6 +29,17 @@ vmap ,e : call TrEN()  <CR>
 nmap ,p :Project proj
 nmap ,l :redraw! <CR>
 
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
 map <C-H> <C-W>h
 map <C-J> <C-W>j
 map <C-K> <C-W>k
@@ -68,4 +79,4 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'VimExplorer'
 Bundle 'tsaleh/vim-align'
-
+Bundle 'Shougo/unite.vim'
