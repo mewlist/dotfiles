@@ -19,6 +19,14 @@ imap <Nul> <c-x><c-o>
 set laststatus=2
 set statusline=%F%m%r%h%w\ [%Y]\ [%04l,%04v][%p%%]
 
+set lcs=tab:>.,trail:_,extends:\
+set list
+highlight SpecialKey cterm=NONE ctermfg=7 guifg=7
+highlight JpSpace cterm=underline ctermfg=8 guifg=8
+highlight Space cterm=reverse ctermfg=1 guifg=1
+au BufRead,BufNew * match JpSpace /　/
+au BufRead,BufNew * match Space /\s\+$/
+
 nmap ,a :!alert rspec -b --drb %
 nmap ,s :!alert-sticky rspec -b --drb %
 nmap ,j :'<,'> call TrJA() <CR>
