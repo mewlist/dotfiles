@@ -1,3 +1,7 @@
 git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 cd ./vim_plugins/snipmate-snippets
 rake deploy_local
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle; \
+  curl -so ~/.vim/autoload/pathogen.vim \
+  https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim

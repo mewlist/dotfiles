@@ -75,6 +75,8 @@ au BufRead,BufNewFile *.slim set filetype=slim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+call pathogen#infect() 
+
 Bundle 'gmarik/vundle'
  
 " 利用中のプラグインをBundle
@@ -88,3 +90,5 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'VimExplorer'
 Bundle 'tsaleh/vim-align'
 Bundle 'Shougo/unite.vim'
+Bundle 'tpope/vim-pathogen'
+Bundle 'kchmck/vim-coffee-script'
