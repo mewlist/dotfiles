@@ -1,0 +1,15 @@
+[user]
+  name = mewlist(Hidenori Doi)
+  email = mewlist@mewlist.com
+[alias]
+  co = checkout
+  st = status
+  ll = log --graph --decorate --oneline
+  la = log --graph --decorate --oneline --all
+  topic = "!sh -c 'git co -b $1 master' __dummy__"
+  current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
+  push-for-review = "!sh -c 'git push origin HEAD:refs/for/master/`git current-branch`'"
+[github]
+  user = mewlist
+[color]
+  ui = true
