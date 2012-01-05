@@ -64,13 +64,13 @@ endfunction
 function TrJA() range
   silent execute "normal! gv:B s/.\\+/\\=system('echo -n '.submatch(0).' | translate j')/g\<CR>"
 endfunction
- 
+
 au BufRead,BufNewFile *.slim set filetype=slim
 
 " call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags()
 " set helpfile=$VIMRUNTIME/doc/help.txt
-  
+
 "" Vundle '''
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -78,7 +78,7 @@ call vundle#rc()
 call pathogen#infect() 
 
 Bundle 'gmarik/vundle'
- 
+
 " 利用中のプラグインをBundle
 Bundle 'vim-scripts/AutoComplPop'
 Bundle 'vim-scripts/TabBar'
