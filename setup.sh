@@ -1,6 +1,9 @@
 ROOTDIR=`pwd`
 
 git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git submodule init
+git submodule update
+
 cd ./vim_plugins/snipmate-snippets
 rake deploy_local
 cd $ROOTDIR
