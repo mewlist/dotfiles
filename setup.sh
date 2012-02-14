@@ -12,7 +12,6 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle; \
   curl -so ~/.vim/autoload/pathogen.vim \
   https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 
-cp -r ./.vim/after ~/.vim/
 cp ./.vimrc ~/
 
 vim -u .vimrc +BundleInstall +q +q
