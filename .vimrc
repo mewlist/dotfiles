@@ -21,9 +21,9 @@ set statusline=%F%m%r%h%w\ [%Y]\ [%04l,%04v][%p%%]
 
 set lcs=tab:>.,trail:_,extends:\
 set list
-highlight SpecialKey cterm=NONE ctermfg=7 guifg=7
-highlight JpSpace cterm=underline ctermfg=8 guifg=8
-highlight Space cterm=reverse ctermfg=1 guifg=1
+highlight SpecialKey cterm=NONE ctermfg=7 guifg=#AA0000
+highlight JpSpace cterm=underline ctermfg=8 guifg=#AA0000
+highlight Space cterm=reverse ctermfg=1 guifg=#AA0000
 au BufRead,BufNew * match JpSpace /　/
 au BufRead,BufNew * match Space /\s\+$/
 
@@ -75,7 +75,7 @@ au BufRead,BufNewFile *.slim set filetype=slim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-call pathogen#infect() 
+call pathogen#infect()
 
 Bundle 'gmarik/vundle'
 
@@ -84,7 +84,6 @@ Bundle 'vim-scripts/AutoComplPop'
 Bundle 'vim-scripts/TabBar'
 Bundle 'scrooloose/nerdtree'
 Bundle 'bbommarito/vim-slim'
-" Bundle 'sontek/minibufexpl.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'VimExplorer'
@@ -92,3 +91,8 @@ Bundle 'tsaleh/vim-align'
 Bundle 'Shougo/unite.vim'
 Bundle 'tpope/vim-pathogen'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-rails'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "snipmate-snippets"
+Bundle "garbas/vim-snipmate"
