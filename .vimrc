@@ -57,7 +57,7 @@ map <C-TAB> <C-W>w
 set encoding=utf-8
 set fileencodings=utf-8
 set termencoding=utf-8
-
+set backupdir=/tmp
 function TrEN() range
   silent execute "normal! gv:B s/.\\+/\\=system('echo -n '.submatch(0).' | translate e')/g\<CR>"
 endfunction
@@ -77,11 +77,13 @@ call vundle#rc()
 
 call pathogen#infect()
 
+let plugin_dicwin_disable = 1
 Bundle 'gmarik/vundle'
 
 " 利用中のプラグインをBundle
 Bundle 'vim-scripts/AutoComplPop'
 Bundle 'vim-scripts/TabBar'
+Bundle 'taku-o/vim-vis'
 Bundle 'scrooloose/nerdtree'
 Bundle 'bbommarito/vim-slim'
 Bundle 'msanders/snipmate.vim'
@@ -96,3 +98,15 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "snipmate-snippets"
 Bundle "garbas/vim-snipmate"
+
+
+if has('mac') && !has('gui')
+    nnoremap <silent> <Space>y :.w !pbcopy<CR><CR>
+    vnoremap <silent> <Space>y :w !pbcopy<CR><CR>
+    nnoremap <silent> <Space>p :r !pbpaste<CR>
+    vnoremap <silent> <Space>p :r !pbpaste<CR>
+" GVim(Mac & Win)
+else
+    noremap <Space>y "+y
+    noremap <Space>p "+p
+endif
