@@ -1,15 +1,24 @@
 [user]
-  name = mewlist(Hidenori Doi)
-  email = mewlist@mewlist.com
+	name = mewlist
+	email = mewlist@mewlist.com
 [alias]
   co = checkout
   st = status
   ll = log --graph --decorate --oneline
-  la = log --graph --decorate --oneline --all
+  la = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  ls = log --stat
   topic = "!sh -c 'git co -b $1 master' __dummy__"
   current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
   push-for-review = "!sh -c 'git push origin HEAD:refs/for/master/`git current-branch`'"
+  ranking = shortlog -s -n --no-merges
+  ref  = reflog
+  refa = reflog --all
+  rl   = reflog
+  rla  = reflog --all
 [github]
   user = mewlist
 [color]
   ui = true
+[core]
+  excludesfile = /Users/mewlist/.gitignore

@@ -29,12 +29,11 @@ au BufRead,BufNew * match Space /\s\+$/
 
 nmap ,a :!alert rspec -b --drb %
 nmap ,s :!alert-sticky rspec -b --drb %
+nmap ,r :call RSpecLine() <CR>
 nmap ,j :'<,'> call TrJA() <CR>
 nmap ,e :'<,'> call TrEN() <CR>
 vmap ,j : call TrJA()  <CR>
-vmap ,e : call TrEN()  <CR>
-
-nmap ,p :Project proj
+vmap ,e :jcall TrEN()  <CR>
 nmap ,l :redraw! <CR>
 
 " バッファ一覧
@@ -98,6 +97,8 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "snipmate-snippets"
 Bundle "garbas/vim-snipmate"
+Bundle "skwp/vim-rspec"
+Bundle "Shougo/vimfiler"
 
 
 if has('mac') && !has('gui')
@@ -110,3 +111,9 @@ else
     noremap <Space>y "+y
     noremap <Space>p "+p
 endif
+
+" vim-rspec
+function RSpecLine()
+  execute '! zsh -c ". $rvm_path/scripts/rvm; rspec -O ~/.rspec -X % -l '.line('.').'"'
+endfunction
+
