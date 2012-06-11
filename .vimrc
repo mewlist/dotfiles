@@ -30,11 +30,13 @@ au BufRead,BufNew * match Space /\s\+$/
 nmap ,a :!alert rspec -b --drb %
 nmap ,s :!alert-sticky rspec -b --drb %
 nmap ,r :call RSpecLine() <CR>
+nmap ,R :call RSpecAll() <CR>
 nmap ,j :'<,'> call TrJA() <CR>
 nmap ,e :'<,'> call TrEN() <CR>
 vmap ,j : call TrJA()  <CR>
 vmap ,e :jcall TrEN()  <CR>
 nmap ,l :redraw! <CR>
+nmap ,b :call GitBlame() <CR>
 
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
@@ -69,6 +71,9 @@ au BufRead,BufNewFile *.slim set filetype=slim
 " call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags()
 " set helpfile=$VIMRUNTIME/doc/help.txt
+
+set tags=./tags
+set tags+=~/.tags/**;
 
 "" Vundle '''
 set rtp+=~/.vim/bundle/vundle/
@@ -115,5 +120,13 @@ endif
 " vim-rspec
 function RSpecLine()
   execute '! zsh -c ". $rvm_path/scripts/rvm; rspec -O ~/.rspec -X % -l '.line('.').'"'
+endfunction
+
+function RSpecAll()
+  execute '! zsh -c ". $rvm_path/scripts/rvm; rspec -O ~/.rspec -X %"'
+endfunction
+" git blame
+function GitBlame()
+  execute '! zsh -c "git blame %"'
 endfunction
 
