@@ -5,8 +5,8 @@
   co = checkout
   st = status
   ll = log --graph --decorate --oneline
-  la = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  la = log --graph --date=iso --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %cd' --abbrev-commit --date=relative --all
+  lg = log --graph --date=iso --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %cd' --abbrev-commit --date=relative
   ls = log --stat
   topic = "!sh -c 'git co -b $1/$2 origin/$1' __dummy__"
   current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
@@ -17,6 +17,9 @@
   refa = reflog --all
   rl   = reflog
   rla  = reflog --all
+  dst  = diff --staged
+  addw  = "!sh -c 'git diff -w | git apply --cached'"
+  diffw = diff -w
 [github]
   user = mewlist
 [color]
@@ -24,3 +27,5 @@
 [core]
   excludesfile = ~/.gitignore
 	editor = ~/bin/vim
+	quotepath = true
+	precomposeunicode = true
