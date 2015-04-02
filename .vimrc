@@ -1,4 +1,4 @@
-set tabstop=1
+set tabstop=4
 set shiftwidth=2
 set expandtab
 set autoindent
@@ -95,10 +95,10 @@ Bundle 'gmarik/vundle'
 Bundle 'Shougo/neocomplcache.git'
 Bundle 'Shougo/neosnippet.git'
 Bundle "snipmate-snippets"
-Bundle 'vim-scripts/TabBar'
+" Bundle 'vim-scripts/TabBar'
 Bundle 'taku-o/vim-vis'
 Bundle 'scrooloose/nerdtree'
-Bundle 'bbommarito/vim-slim'
+" Bundle 'bbommarito/vim-slim'
 " Bundle 'mattn/zencoding-vim'
 Bundle 'VimExplorer'
 Bundle 'tsaleh/vim-align'
@@ -110,9 +110,11 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "skwp/vim-rspec"
 Bundle "Shougo/vimfiler"
+Bundle "Shougo/neocomplete.vim"
 
 
 let g:unite_enable_start_insert = 1
+let g:Align_xstrlen = 3
 
 if has('mac') && !has('gui')
     nnoremap <silent> <Space>y :.w !pbcopy<CR><CR>
@@ -135,7 +137,7 @@ function RSpecAll()
 endfunction
 " git blame
 function GitBlame()
-  execute '! zsh -c "git blame %"'
+  execute '! zsh -c "git blame -w %"'
 endfunction
 function GitLog()
   execute '! zsh -c "git log %"'
@@ -153,3 +155,5 @@ smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" 
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+set backupskip=/tmp/*,/private/tmp/*

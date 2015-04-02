@@ -20,13 +20,26 @@
   dst  = diff --staged
   addw  = "!sh -c \"git diff -w $1 | git apply --cached\""
   diffw = diff -w
-  sed  = "!LANG=C LC_ALL=C sh -c \"git ls-files $1 | grep -iv '.\\(so\\|ico\\|exe\\|pdf\\|jar\\|gif\\|air\\|zip\\|ser\\|p12\\|pbj\\|swz\\|swc\\|mp3\\|png\\|jpg\\|swf\\)$' | xargs -I{} sed -i '' -e $2 {} \""
+  sed  = "!LANG=C LC_ALL=C sh -c \"git ls-files $1 | grep -iv '.\\(ane\\|a\\|o\\|so\\|ico\\|exe\\|pdf\\|jar\\|gif\\|air\\|zip\\|ser\\|p12\\|pbj\\|swz\\|swc\\|mp3\\|png\\|jpg\\|swf\\)$' | xargs -I{} sed -i '' -e '$2' {} \""
+  fcob = "!sh -c \"git branch -D $1; git co -b $1\""
 [github]
   user = mewlist
+[diff]
+	tool = vimdiff
+#  tool = opendiff
+[merge]
+	tool = vimdiff
 [color]
   ui = true
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+#  diff =
+#  diff = diff-highlight | less
 [core]
   excludesfile = ~/.gitignore
-	editor = ~/bin/vim
+	editor = /Applications/MacVim.app/Contents/MacOS/Vim
 	quotepath = true
 	precomposeunicode = true
+[difftool]
+	prompt = false
