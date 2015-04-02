@@ -86,8 +86,6 @@ set tags+=~/.tags/**;
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-call pathogen#infect()
-
 let plugin_dicwin_disable = 1
 Bundle 'gmarik/vundle'
 
@@ -112,6 +110,7 @@ Bundle "skwp/vim-rspec"
 Bundle "Shougo/vimfiler"
 Bundle "Shougo/neocomplete.vim"
 
+call pathogen#infect()
 
 let g:unite_enable_start_insert = 1
 let g:Align_xstrlen = 3
