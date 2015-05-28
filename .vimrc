@@ -9,7 +9,7 @@ set laststatus=1
 set showcmd
 set hlsearch
 set incsearch
-syntax on
+syntax enable
 filetype on
 filetype indent on
 filetype plugin on
@@ -82,33 +82,90 @@ au BufRead,BufNewFile *.slim set filetype=slim
 set tags=./tags
 set tags+=~/.tags/**;
 
-"" Vundle '''
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" -------------------------------
+" NeoBundle
+" -------------------------------
+if has('vim_starting')
+  if &compatible
+    set nocompatible
+  endif
 
-let plugin_dicwin_disable = 1
-Bundle 'gmarik/vundle'
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" コード補完
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'marcus/rsense'
+NeoBundle 'supermomonga/neocomplete-rsense.vim'
+
+" 静的解析
+NeoBundle 'scrooloose/syntastic'
+
+" ドキュメント参照
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'yuku-t/vim-ref-ri'
+
+" メソッド定義元へのジャンプ
+NeoBundle 'szw/vim-tags'
+
+" 自動で閉じる
+NeoBundle 'tpope/vim-endwise'
 
 " 利用中のプラグインをBundle
-Bundle 'Shougo/neocomplcache.git'
-Bundle 'Shougo/neosnippet.git'
-Bundle "snipmate-snippets"
-" Bundle 'vim-scripts/TabBar'
-Bundle 'taku-o/vim-vis'
-Bundle 'scrooloose/nerdtree'
-" Bundle 'bbommarito/vim-slim'
-" Bundle 'mattn/zencoding-vim'
-Bundle 'VimExplorer'
-Bundle 'tsaleh/vim-align'
-Bundle 'Shougo/unite.vim'
-Bundle 'tpope/vim-pathogen'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-rails'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "skwp/vim-rspec"
-Bundle "Shougo/vimfiler"
-Bundle "Shougo/neocomplete.vim"
+NeoBundle 'Shougo/neocomplcache.git'
+NeoBundle 'Shougo/neosnippet.git'
+NeoBundle "snipmate-snippets"
+
+NeoBundle 'taku-o/vim-vis'
+NeoBundle 'scrooloose/nerdtree'
+
+NeoBundle 'tsaleh/vim-align'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'tpope/vim-pathogen'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'tpope/vim-rails'
+NeoBundle "MarcWeber/vim-addon-mw-utils"
+NeoBundle "tomtom/tlib_vim"
+NeoBundle "skwp/vim-rspec"
+
+call neobundle#end()
+
+NeoBundleCheck
+
+" -------------------------------
+" Rsense
+" -------------------------------
+let g:rsenseHome = '/usr/local/Cellar/rsense/0.3/libexec'
+let g:rsenseUseOmniFunc = 1
+
+" --------------------------------
+" neocomplete.vim
+" --------------------------------
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
+
+" --------------------------------
+" rubocop
+" --------------------------------
+" syntastic_mode_mapをactiveにするとバッファ保存時にsyntasticが走る
+" active_filetypesに、保存時にsyntasticを走らせるファイルタイプを指定する
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
+
+" --------------------------------
+" 基本設定
+" --------------------------------
+" 想定される改行コードの指定する
+set fileformats=unix,dos,mac
 
 call pathogen#infect()
 
