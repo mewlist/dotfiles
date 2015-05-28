@@ -1,6 +1,6 @@
 ROOTDIR=`pwd`
 
-git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 git submodule init
 git submodule update
 
@@ -13,7 +13,5 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle; \
   https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 
 cp ./.vimrc ~/
-
-vim -u .vimrc +BundleInstall +q +q
 
 rm -f ~/.vim/bundle/snipmate.vim/snippets/*
