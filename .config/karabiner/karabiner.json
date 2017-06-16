@@ -25,16 +25,14 @@
             "one_to_many_mappings": {},
             "selected": true,
             "simple_modifications": {
-                "spacebar": "left_shift",
-                "left_command": "left_option",
-                "left_option": "left_command",
-                "right_command": "right_option",
-                "right_option": "right_command"
+                "backslash": "delete_or_backspace",
+                "caps_lock": "left_control",
+                "delete_or_backspace": "backslash"
             },
             "standalone_keys": {
-                "left_option" : "japanese_eisuu",
-                "right_option" : "japanese_kana",
-                "spacebar" : "spacebar"
+                "left_command": "japanese_eisuu",
+                "right_command": "japanese_kana",
+                "spacebar": "spacebar"
             },
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
