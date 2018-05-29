@@ -32,7 +32,7 @@ highlight Space cterm=reverse ctermfg=1 guifg=#AA0000
 au BufRead,BufNew * match JpSpace /　/
 au BufRead,BufNew * match Space /\s\+$/
 
-nmap ,a :!alert rspec -b --drb %
+" nmap ,a :!alert rspec -b --drb %
 nmap ,s :!alert-sticky rspec -b --drb %
 nmap ,r :call RSpecLine() <CR>
 nmap gl :call GitLog() <CR>
@@ -43,6 +43,8 @@ nmap ,e :'<,'> call TrEN() <CR>
 vmap ,j : call TrJA()  <CR>
 vmap ,e :jcall TrEN()  <CR>
 nmap ,l :redraw! <CR>
+nmap ,a :call AtCoderRuby() <CR>
+nmap ,h :call AtCoderHaskell() <CR>
 
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
@@ -75,45 +77,33 @@ endfunction
 
 au BufRead,BufNewFile *.slim set filetype=slim
 
-" call pathogen#runtime_append_all_bundles()
-" call pathogen#helptags()
-" set helpfile=$VIMRUNTIME/doc/help.txt
-
 set tags=./tags
 set tags+=~/.tags/**;
 
 " -------------------------------
 " NeoBundle
 " -------------------------------
-if has('vim_starting')
-  if &compatible
-    set nocompatible
-  endif
 
+" neobundle settings {{{
+if has('vim_starting')
+  set nocompatible
+  " neobundle をインストールしていない場合は自動インストール
+  if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
+    echo "install neobundle..."
+    " vim からコマンド呼び出しているだけ neobundle.vim のクローン
+    :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
+  endif
+  " runtimepath の追加は必須
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
+let g:neobundle_default_git_protocol='https'
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " コード補完
 NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'marcus/rsense'
-NeoBundle 'supermomonga/neocomplete-rsense.vim'
-
-" 静的解析
-NeoBundle 'scrooloose/syntastic'
-
-" ドキュメント参照
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'yuku-t/vim-ref-ri'
-
-" メソッド定義元へのジャンプ
-NeoBundle 'szw/vim-tags'
-
-" 自動で閉じる
-NeoBundle 'tpope/vim-endwise'
 
 " 利用中のプラグインをBundle
 NeoBundle 'Shougo/neocomplcache.git'
@@ -132,9 +122,9 @@ NeoBundle "MarcWeber/vim-addon-mw-utils"
 NeoBundle "tomtom/tlib_vim"
 NeoBundle "skwp/vim-rspec"
 
+NeoBundleCheck
 call neobundle#end()
 
-NeoBundleCheck
 
 " -------------------------------
 " Rsense
@@ -199,6 +189,13 @@ function GitLog()
   execute '! zsh -c "git log %"'
 endfunction
 
+function AtCoderRuby()
+  execute '! zsh -c "ruby %"'
+endfunction
+
+function AtCoderHaskell()
+  execute '! zsh -c "ghc %; ./atcoder < data"'
+endfunction
 
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
