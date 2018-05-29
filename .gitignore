@@ -17,10 +17,19 @@ ExportedObj/
 *.pidb
 *.booproj
 *.svd
+
+# Blender backup files
 *.blend1
 *.blend1.meta
+
+# mac
 .DS_Store
+
+# Visual Studio settings
 .vs
+
+# Rider settings
+.idea
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -30,6 +39,5 @@ sysinfo.txt
 
 # Builds
 *.apk
-*.unitypackage
 
 iOS
