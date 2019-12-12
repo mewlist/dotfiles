@@ -77,7 +77,6 @@
 *~_::
 *~=::
 *~+::
-*~[::
 *~{::
 *~]::
 *~}::
@@ -110,6 +109,9 @@
 *~PgDn::
 *~LCtrl::
 *~RCtrl::
+    Return
+*~[::
+    Send {Esc}
     Return
 
 ; 左 Ctrl 空打ちで IME を OFF
