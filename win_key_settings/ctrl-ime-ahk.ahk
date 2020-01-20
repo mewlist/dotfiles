@@ -110,7 +110,8 @@
 *~LCtrl::
 *~RCtrl::
     Return
-*~[::
+
+^[::
     Send {Esc}
     Return
 
